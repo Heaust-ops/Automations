@@ -1,3 +1,8 @@
+# enter file name, enter form tag, tell it db column names and table name, tell it the name of ajax file
+# and it scrapes that specific form of which the tag you provided and adds a update statement on the last of that file.
+# with $_POST expressions added and imploded expressions added where necessary
+# will make your life with php forms a lot easier!
+
 import re
 project_folder_path = "Add your project folder path" # change 'Add your project folder path' to your project folder destination where your files are
 k = input("Enter file name: ")
