@@ -20,8 +20,13 @@ window_prev=""
 
 while [ true ]
 do
+    # RUN THIS EVERY 0.1 SECONDS
     sleep 0.1
+    # GET CURRENT WINDOW
     window=`xdotool getwindowfocus getwindowname`
+    # ONLY DO SOMETHING IF THE WINDOW HAS CHANGED
+    if [ "$window_prev" != "$window" ]; then
+    # WRITE MAPPINGS W.R.T. THE WINDOW IN FOCUS TO THE CONFIG FILE (.xbindkeysrc)
     case $window in
 
         # IF WE'RE IN TERMINAL
@@ -59,9 +64,9 @@ do
     alt + b:8 + Release" > $file
             ;;
     esac
-    if [ "$window_prev" != "$window" ]; then
-        killall -HUP xbindkeys
+    # APPLY THE CHANGED CONFIGURATION
+    killall -HUP xbindkeys
     fi
-
+    # SET THE PREVIOUS WINDOW TO THE CURRENT WINDOW TO REFERENCE NEXT TIME
     window_prev=$window
 done
